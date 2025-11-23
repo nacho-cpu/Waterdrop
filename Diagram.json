@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "author": "Nachiin",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -104.1,
+      "left": 91.9,
+      "attrs": { "distance": "21" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": -3.6, "left": 311, "attrs": { "color": "red" } },
+    { "type": "wokwi-servo", "id": "servo1", "top": 74.8, "left": 249.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:VCC", "pico:3V3", "red", [ "v0" ] ],
+    [ "ultrasonic1:GND", "pico:GND.8", "black", [ "v0" ] ],
+    [ "led1:C", "pico:GND.7", "green", [ "v0" ] ],
+    [ "led1:A", "pico:GP27", "green", [ "v0" ] ],
+    [ "servo1:GND", "pico:GND.6", "black", [ "h0" ] ],
+    [ "ultrasonic1:ECHO", "pico:GP3", "green", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "pico:GP2", "green", [ "v0" ] ],
+    [ "servo1:PWM", "pico:GP21", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
